@@ -1,6 +1,12 @@
 import axios from 'axios';
 
+const token = localStorage.getItem('token');
 export const instance = axios.create({
-    withCredentials: false,
-    baseURL: 'https://front-test.hex.team/',
+  baseURL: 'https://front-test.hex.team/',
+  withCredentials: false,
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
 });
