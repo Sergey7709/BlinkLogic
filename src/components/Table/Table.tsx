@@ -25,7 +25,6 @@ export const Table = () => {
   });
 
   const fetchedLink = data?.data ?? [];
-  const totalRowCount = data?.meta?.totalRowCount ?? 0; //!!!!
 
   const table = useMantineReactTable({
     columns: dataColumns,
@@ -47,7 +46,6 @@ export const Table = () => {
       : undefined,
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
-    rowCount: totalRowCount,
     state: {
       isLoading,
       pagination,
