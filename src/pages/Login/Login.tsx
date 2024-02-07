@@ -14,7 +14,6 @@ type LoginRequest = {
 
 export const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  console.log('login render');
 
   const { mutateAsync } = useMutation({
     mutationFn: async (loginData: { username: string; password: string }) => {
@@ -24,7 +23,7 @@ export const Login = () => {
         const token = localStorage.getItem('token');
         setIsAuthenticated(!!token);
       } catch {
-        console.log('error');
+        console.log('error'); //!!!
       }
     },
   });
