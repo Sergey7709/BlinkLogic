@@ -34,7 +34,7 @@ export const AuthForm = ({ title, handleSubmit }: AuthFormProps) => {
   return (
     <>
       <Space h={300} />
-      <Box maw={340} mx="auto">
+      <Box w={300} mx="auto">
         <Card withBorder radius="md" shadow="xl">
           <Center>
             <Title order={3}>{title}</Title>
