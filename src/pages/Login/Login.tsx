@@ -1,7 +1,9 @@
 import { AuthForm } from '@/components/AuthForm';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { instance } from '@/service/api.config';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '@/context';
+import { routerPath } from '@/Router/constantsRouter';
 
 type LoginRequest = {
   data: {
@@ -11,16 +13,16 @@ type LoginRequest = {
 };
 
 export const Login = () => {
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
   console.log('login render');
-  // const navigate = useNavigate(); ///!!!
 
   const { mutateAsync } = useMutation({
     mutationFn: async (loginData: { username: string; password: string }) => {
       try {
         const resp: LoginRequest = await instance.post('/api/login', loginData);
         localStorage.setItem('token', resp.data.access_token);
-        console.log(resp.data.token_type);
-        // navigate('/'); ///!!!
+        const token = localStorage.getItem('token');
+        setIsAuthenticated(!!token);
       } catch {
         console.log('error');
       }
@@ -32,7 +34,11 @@ export const Login = () => {
   };
   return (
     <>
-      <AuthForm title="Sign In" handleSubmit={useLogin} />
+      {isAuthenticated ? (
+        <Navigate to={routerPath.linksTable} replace />
+      ) : (
+        <AuthForm title="Sign In" handleSubmit={useLogin} />
+      )}
     </>
   );
 };
