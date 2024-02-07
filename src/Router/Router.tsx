@@ -7,8 +7,7 @@ import { PrivateRoutes } from '@/Router/PrivateRoutes';
 import { LinksTable } from '@/pages/Links-table';
 
 const publicRoutes: RouteObject[] = [
-  { path: routerPath.login,
-    element: <Login /> },
+  { path: routerPath.login, element: <Login /> },
   {
     path: routerPath.registration,
     element: <Registration />,
@@ -17,7 +16,7 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    path: routerPath.rootElement,
+    path: routerPath.linksTable,
     element: <LinksTable />,
   },
 ];
@@ -31,11 +30,11 @@ const router = createBrowserRouter([
         element: <PrivateRoutes />,
         children: privateRoutes,
       },
-        ...publicRoutes,
+      ...publicRoutes,
     ],
   },
 ]);
-
+console.log('route ');
 export function Router() {
   return <RouterProvider router={router} />;
 }
