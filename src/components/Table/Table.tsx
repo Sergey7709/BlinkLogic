@@ -24,7 +24,7 @@ export const Table = () => {
     sorting,
   });
 
-  const fetchedLink = data?.data ?? [];
+  const fetchedLink = data ?? [];
 
   const table = useMantineReactTable({
     columns: dataColumns,
