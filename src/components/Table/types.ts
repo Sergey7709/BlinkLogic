@@ -1,23 +1,13 @@
-import type {
-  MRT_ColumnFilterFnsState,
-  MRT_ColumnFiltersState,
-  MRT_PaginationState,
-  MRT_SortingState,
-} from 'mantine-react-table';
+import type { MRT_PaginationState, MRT_SortingState } from 'mantine-react-table';
 
 export type ColumnsData = {
-  firstName: string;
-  lastName: string;
-  address: string;
-  state: string;
-  phoneNumber: string;
+  short: string;
+  target: string;
+  counter: string;
 };
 
 export type DataApiResponse = {
-  data: Array<ColumnsData>;
-  meta: {
-    totalRowCount: number;
-  };
+  data: Array<ColumnsData & { id: string }>;
 };
 
 export type Params = {
