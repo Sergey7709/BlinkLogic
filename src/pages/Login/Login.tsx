@@ -1,9 +1,10 @@
 import { AuthForm } from '@/components/AuthForm';
 import { useMutation } from '@tanstack/react-query';
 import { instance } from '@/service/api.config';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '@/context';
 import { routerPath } from '@/Router/constantsRouter';
+import { Button, Flex, Space, Text } from '@mantine/core';
 
 type LoginRequest = {
   data: {
@@ -36,7 +37,22 @@ export const Login = () => {
       {isAuthenticated ? (
         <Navigate to={routerPath.linksTable} replace />
       ) : (
-        <AuthForm title="Sign In" handleSubmit={useLogin} />
+        <Flex w="100%" justify="center" align="center" direction="column">
+          <AuthForm title="Sign In" handleSubmit={useLogin} />
+          <Space h="lg" />
+          <Flex w={300} justify="center">
+            <Button variant="subtle">
+              <Text
+                component={Link}
+                to={routerPath.registration}
+                variant="gradient"
+                gradient={{ from: 'lime', to: 'blue', deg: 164 }}
+              >
+                Need an account? Sign up.
+              </Text>
+            </Button>
+          </Flex>
+        </Flex>
       )}
     </>
   );
