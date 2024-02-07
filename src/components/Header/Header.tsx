@@ -3,7 +3,7 @@ import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
 import { ButtonPanel } from '@/components/Header/ButtonPanel';
 
 export const Header = () => (
-  <Box p={15}>
+  <Box p={20}>
     <header>
       <Group justify="space-between" h="100%">
         <Group>
