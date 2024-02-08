@@ -6,8 +6,6 @@ export type ColumnsData = {
   counter: string;
 };
 
-export type DataApiResponse = Array<ColumnsData & { id: string }>;
-
 export type Params = {
   sorting: MRT_SortingState;
   pagination: MRT_PaginationState;
