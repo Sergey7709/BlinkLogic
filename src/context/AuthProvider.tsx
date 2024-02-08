@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: PropsChildren) => {
     const token = localStorage.getItem('token');
     setIsAuthenticated(!!token);
   }, []);
-  console.log(isAuthenticated);
+
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
