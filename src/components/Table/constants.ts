@@ -6,13 +6,14 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
     accessorKey: 'short',
     header: 'Short Link',
   },
-
   {
     accessorKey: 'target',
     header: 'Target Link',
+    enableClickToCopy: false,
   },
   {
     accessorKey: 'counter',
     header: 'Counter',
+    enableClickToCopy: false,
   },
 ];
