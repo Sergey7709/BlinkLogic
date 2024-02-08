@@ -3,7 +3,6 @@ import { baseUrl } from '@/service/constantsApi';
 
 export const instance = axios.create({
   baseURL: baseUrl,
-  // withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
