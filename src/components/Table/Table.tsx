@@ -8,8 +8,8 @@ import {
   type MRT_PaginationState,
   type MRT_SortingState,
 } from 'mantine-react-table';
+import { useGetData } from '@/service/hooks/useGetData';
 import { dataColumns } from './constants';
-import { useGetData } from './hooks/useGetData';
 
 export const Table = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([]);
