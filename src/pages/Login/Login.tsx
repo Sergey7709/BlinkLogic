@@ -47,6 +47,7 @@ export const Login = () => {
                 to={routerPath.registration}
                 variant="gradient"
                 gradient={{ from: 'lime', to: 'blue', deg: 164 }}
+                fw={700}
               >
                 Need an account? Sign up.
               </Text>
