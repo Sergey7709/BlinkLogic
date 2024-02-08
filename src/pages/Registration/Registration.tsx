@@ -32,6 +32,7 @@ export const Registration = () => {
             component={Link}
             to={routerPath.login}
             variant="gradient"
+            fw={700}
             gradient={{ from: 'indigo', to: 'red', deg: 166 }}
           >
             Go back
