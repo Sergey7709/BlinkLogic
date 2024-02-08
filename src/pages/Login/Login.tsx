@@ -1,44 +1,34 @@
 import { AuthForm } from '@/components/AuthForm';
-import { useMutation } from '@tanstack/react-query';
-import { instance } from '@/service/api.config';
 import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '@/context';
 import { routerPath } from '@/Router/constantsRouter';
 import { Button, Flex, Space, Text } from '@mantine/core';
-
-type LoginRequest = {
-  data: {
-    access_token: string;
-    token_type: string;
-  };
-};
+import { UseCreateLogin } from '@/service/hooks/useCreateLogin';
+import { handleAxiosError } from '@/service/function/handleAxiosError';
 
 export const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const { mutateAsync } = useMutation({
-    mutationFn: async (loginData: { username: string; password: string }) => {
-      try {
-        const resp: LoginRequest = await instance.post('/api/login', loginData);
-        localStorage.setItem('token', resp.data.access_token);
-        const token = localStorage.getItem('token');
-        setIsAuthenticated(!!token);
-      } catch {
-        console.log('error'); //!!!
-      }
-    },
-  });
+  const { mutate, error, isPending } = UseCreateLogin({ setIsAuthenticated });
 
-  const useLogin = (loginData: { username: string; password: string }) => {
-    mutateAsync(loginData);
+  const handleSubmitLogin = (loginData: { username: string; password: string }) => {
+    mutate(loginData);
   };
+
+  const errorData = handleAxiosError(error);
+
   return (
     <>
       {isAuthenticated ? (
         <Navigate to={routerPath.linksTable} replace />
       ) : (
         <Flex w="100%" justify="center" align="center" direction="column">
-          <AuthForm title="Sign In" handleSubmit={useLogin} />
+          <AuthForm title="Sign In" handleSubmit={handleSubmitLogin} isPending={isPending} />
+          {error && (
+            <Text c="red" size="lg">
+              {errorData?.detail}
+            </Text>
+          )}
           <Space h="lg" />
           <Flex w={300} justify="center">
             <Button variant="subtle">
