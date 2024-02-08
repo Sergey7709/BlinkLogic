@@ -1,11 +1,29 @@
 import { useForm } from '@mantine/form';
-import { Box, Button, Card, Center, PasswordInput, Space, TextInput, Title } from '@mantine/core';
+import {
+  Box,
+  Button,
+  Card,
+  Center,
+  LoadingOverlay,
+  PasswordInput,
+  Space,
+  TextInput,
+  Title,
+} from '@mantine/core';
+import { useEffect, useState } from 'react';
 
 type AuthFormProps = {
   title: string;
   handleSubmit: (loginData: { username: string; password: string }) => void;
+  isPending?: boolean;
 };
-export const AuthForm = ({ title, handleSubmit }: AuthFormProps) => {
+export const AuthForm = ({ title, handleSubmit, isPending }: AuthFormProps) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    isPending ? setVisible(true) : setVisible(false);
+  }, [isPending]);
+
   const form = useForm({
     initialValues: { username: '', password: '' },
 
@@ -34,7 +52,8 @@ export const AuthForm = ({ title, handleSubmit }: AuthFormProps) => {
   return (
     <>
       <Space h={300} />
-      <Box w={300} mx="auto">
+      <Box w={300} mx="auto" pos="relative">
+        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: 'sm', blur: 1 }} />
         <Card withBorder radius="md" shadow="xl">
           <Center>
             <Title order={3}>{title}</Title>
