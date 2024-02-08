@@ -16,7 +16,7 @@ export const Table = () => {
 
   const [pagination, setPagination] = useState<MRT_PaginationState>({
     pageIndex: 0,
-    pageSize: 10,
+    pageSize: 5,
   });
 
   const { data, isError, isFetching, isLoading } = useGetData({
@@ -24,7 +24,8 @@ export const Table = () => {
     sorting,
   });
 
-  const fetchedLink = data ?? [];
+  const fetchedLink = data?.data ?? [];
+  const totalCount = Number(data?.headers['x-total-count']);
 
   const table = useMantineReactTable({
     columns: dataColumns,
@@ -32,12 +33,14 @@ export const Table = () => {
     enableGlobalFilter: false,
     enableFilters: false,
     enableColumnActions: true,
+    enablePagination: true,
     manualPagination: true,
     manualSorting: true,
     enableTopToolbar: true,
     enableDensityToggle: false,
     enableBottomToolbar: true,
     enableClickToCopy: true,
+    rowCount: totalCount, //!!!  значение берется из headers, т.к. Response body  бэк не предоставляет общее кол-во item
     mantineToolbarAlertBannerProps: isError
       ? {
           color: 'red',
@@ -54,6 +57,5 @@ export const Table = () => {
       sorting,
     },
   });
-
   return <MantineReactTable table={table} />;
 };
