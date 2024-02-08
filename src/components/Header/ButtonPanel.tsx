@@ -7,7 +7,6 @@ export const ButtonPanel = () => {
 
   const matches = useMediaQuery('(max-width: 30rem)');
 
-  console.log(matches);
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
