@@ -19,12 +19,13 @@ export const Table = () => {
     pageSize: 5,
   });
 
-  const { data, isError, isFetching, isLoading } = useGetData({
+  const { data, isError, isFetching, isLoading, error } = useGetData({
     pagination,
     sorting,
   });
 
   const fetchedLink = data?.data ?? [];
+
   const totalCount = Number(data?.headers['x-total-count']);
 
   const table = useMantineReactTable({
@@ -40,11 +41,11 @@ export const Table = () => {
     enableDensityToggle: false,
     enableBottomToolbar: true,
     enableClickToCopy: true,
-    rowCount: totalCount, //!!!  значение берется из headers, т.к. Response body  бэк не предоставляет общее кол-во item
+    rowCount: totalCount,
     mantineToolbarAlertBannerProps: isError
       ? {
           color: 'red',
-          children: 'Error loading data',
+          children: `Error loading data.  ${error?.message}`,
         }
       : undefined,
     onPaginationChange: setPagination,
