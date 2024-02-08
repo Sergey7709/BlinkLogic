@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '@/service/constantsApi';
+import { baseUrl } from '@/service/constants.api';
 
 export const instance = axios.create({
   baseURL: baseUrl,

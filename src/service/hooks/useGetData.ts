@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { baseUrl } from '@/service/constantsApi';
+import { baseUrl } from '@/service/constants.api';
 import { instance } from '@/service/api.config';
 
 import { Params } from '@/components/Table/types';
