@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { baseUrl } from '@/service/constantsApi';
 import { instance } from '@/service/api.config';
 
-import { Params } from '../types';
+import { Params } from '@/components/Table/types';
 
 export const useGetData = ({ sorting, pagination }: Params) => {
   const fetchURL = new URL(`${baseUrl}/api/statistics?`);
