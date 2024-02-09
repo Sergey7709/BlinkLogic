@@ -4,7 +4,7 @@ import { routerPath } from '@/Router/constantsRouter';
 import { Layout } from '@/components/Layout';
 import { Registration } from '@/pages/Registration';
 import { PrivateRoutes } from '@/Router/PrivateRoutes';
-import { LinksTable } from '@/pages/Links-table';
+import { DataManager } from '@/pages/Data-manager';
 
 const publicRoutes: RouteObject[] = [
   { path: routerPath.login, element: <Login /> },
@@ -17,7 +17,7 @@ const publicRoutes: RouteObject[] = [
 const privateRoutes: RouteObject[] = [
   {
     path: routerPath.linksTable,
-    element: <LinksTable />,
+    element: <DataManager />,
   },
 ];
 
