@@ -7,6 +7,7 @@ import {
   useMantineReactTable,
   type MRT_PaginationState,
   type MRT_SortingState,
+  MRT_RowSelectionState,
 } from 'mantine-react-table';
 import { useGetData } from '@/service/hooks/useGetData';
 import { handleExtendData } from '@/service/function/handleExtendData';
@@ -15,6 +16,8 @@ import { dataColumns } from './constants';
 
 export const Table = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([]);
+
+  const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
 
   const [pagination, setPagination] = useState<MRT_PaginationState>({
     pageIndex: 0,
@@ -53,6 +56,8 @@ export const Table = () => {
           children: `Error loading data,  ${errorData?.detail}`,
         }
       : undefined,
+    getRowId: (row) => row.id,
+    onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
     state: {
@@ -61,6 +66,7 @@ export const Table = () => {
       showAlertBanner: isError,
       showProgressBars: isFetching,
       sorting,
+      rowSelection,
     },
   });
   return <MantineReactTable table={table} />;
