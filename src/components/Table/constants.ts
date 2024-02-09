@@ -7,6 +7,7 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
     header: 'ID',
     enableClickToCopy: false,
     enableSorting: false,
+    size: 30,
   },
   {
     accessorKey: 'target',
