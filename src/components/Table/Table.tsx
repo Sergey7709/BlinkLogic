@@ -34,6 +34,7 @@ export const Table = () => {
   const table = useMantineReactTable({
     columns: dataColumns,
     data: extendedData,
+    enableColumnResizing: true,
     enableGlobalFilter: false,
     enableFilters: false,
     enableColumnActions: true,
@@ -45,6 +46,7 @@ export const Table = () => {
     enableBottomToolbar: true,
     enableClickToCopy: true,
     rowCount: totalCount,
+    enableRowSelection: true,
     mantineToolbarAlertBannerProps: isError
       ? {
           color: 'red',
@@ -54,7 +56,7 @@ export const Table = () => {
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
     state: {
-      isLoading,
+      showSkeletons: isLoading,
       pagination,
       showAlertBanner: isError,
       showProgressBars: isFetching,
