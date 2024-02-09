@@ -11,6 +11,7 @@ export const Header = () => {
         <Group justify="space-between" h="100%">
           <Text
             flex={1}
+            tt="uppercase"
             size="xl"
             fw={900}
             variant="gradient"
