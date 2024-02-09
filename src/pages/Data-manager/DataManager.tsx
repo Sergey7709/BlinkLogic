@@ -1,7 +1,7 @@
 import { Box, Container, Flex, Space } from '@mantine/core';
 
 import { Table } from '@/components/Table/Table';
-import { ShortLinkCreator } from '@/components/ShortLinkCreator/ShortLinkCreator';
+import { ShortLinkCreator } from '@/components/ShortLinkCreator';
 
 export function DataManager() {
   return (
