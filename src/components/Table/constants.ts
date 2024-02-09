@@ -10,7 +10,7 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
   },
   {
     accessorKey: 'target',
-    header: 'Target Link',
+    header: 'Original Link',
     enableClickToCopy: false,
   },
   {
@@ -24,7 +24,7 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
   },
   {
     accessorKey: 'counter',
-    header: 'Counter',
+    header: 'Link Visits',
     enableClickToCopy: false,
   },
 ];
