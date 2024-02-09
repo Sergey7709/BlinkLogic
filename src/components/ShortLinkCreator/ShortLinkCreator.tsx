@@ -1,7 +1,8 @@
 import { hasLength, useForm } from '@mantine/form';
-import { ActionIcon, Box, Group, rem, TextInput } from '@mantine/core';
+import { ActionIcon, Box, Group, rem, Text, TextInput } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 import { useCreateShortLink } from '@/service/hooks/useCreateShortLink';
+import { useEffect, useState } from 'react';
 
 export const ShortLinkCreator = () => {
   const form = useForm({
@@ -16,9 +17,25 @@ export const ShortLinkCreator = () => {
 
   const { mutateAsync } = useCreateShortLink();
 
+  const [infoSubmit, setInfoSubmit] = useState('');
+
+  useEffect(() => {
+    if (infoSubmit) {
+      const timeout = setTimeout(() => {
+        setInfoSubmit('');
+      }, 4000);
+      return () => clearTimeout(timeout);
+    }
+  }, [infoSubmit]);
+
   const handleCreateShortLink = async (values: string) => {
-    await mutateAsync(values);
-    form.reset();
+    try {
+      await mutateAsync(values);
+      form.reset();
+      setInfoSubmit('Success');
+    } catch {
+      setInfoSubmit('Error submit');
+    }
   };
 
   return (
@@ -43,6 +60,11 @@ export const ShortLinkCreator = () => {
           {...form.getInputProps('link')}
         />
       </Group>
+      {!!infoSubmit && (
+        <Text size="md" c={infoSubmit === 'Success' ? 'green' : 'red'}>
+          {infoSubmit}
+        </Text>
+      )}
     </Box>
   );
 };
