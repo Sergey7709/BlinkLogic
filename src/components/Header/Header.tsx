@@ -1,24 +1,29 @@
 import { Box, Group, Text } from '@mantine/core';
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
 import { ButtonPanel } from '@/components/Header/ButtonPanel';
+import { useMediaQuery } from '@mantine/hooks';
 
-export const Header = () => (
-  <Box p={20}>
-    <header>
-      <Group justify="space-between" h="100%">
-        <Group>
+export const Header = () => {
+  const matches = useMediaQuery('(max-width: 30rem)');
+  return (
+    <Box p={20}>
+      <header>
+        <Group justify="space-between" h="100%">
           <Text
-            size="lg"
+            flex={1}
+            size="xl"
             fw={900}
             variant="gradient"
-            gradient={{ from: 'violet', to: 'rgba(31, 148, 95, 0.99)', deg: 167 }}
+            gradient={{ from: 'indigo', to: 'teal', deg: 191 }}
           >
-            THEME MODE:
+            Short Link Manager
           </Text>
-          <ColorSchemeToggle />
+          <Group gap={matches ? 20 : 30} justify={matches ? 'flex-start' : 'flex-end'}>
+            <ColorSchemeToggle />
+            <ButtonPanel />
+          </Group>
         </Group>
-        <ButtonPanel />
-      </Group>
-    </header>
-  </Box>
-);
+      </header>
+    </Box>
+  );
+};
