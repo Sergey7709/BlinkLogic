@@ -29,7 +29,7 @@ export const Table = () => {
 
   const extendedData = useMemo(() => handleExtendData(data), [data]);
 
-  const totalCount = Number(data?.headers['x-total-count']);
+  const totalCount = Number(data?.headers['x-total-count']) || 0;
 
   const table = useMantineReactTable({
     columns: dataColumns,
