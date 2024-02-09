@@ -10,6 +10,7 @@ import {
 } from 'mantine-react-table';
 import { useGetData } from '@/service/hooks/useGetData';
 import { handleExtendData } from '@/service/function/handleExtendData';
+import { handleAxiosError } from '@/service/function/handleAxiosError';
 import { dataColumns } from './constants';
 
 export const Table = () => {
@@ -24,6 +25,7 @@ export const Table = () => {
     pagination,
     sorting,
   });
+  const errorData = handleAxiosError(error);
 
   const extendedData = useMemo(() => handleExtendData(data), [data]);
 
@@ -46,7 +48,7 @@ export const Table = () => {
     mantineToolbarAlertBannerProps: isError
       ? {
           color: 'red',
-          children: `Error loading data.  ${error?.message}`,
+          children: `Error loading data,  ${errorData?.detail}`,
         }
       : undefined,
     onPaginationChange: setPagination,
