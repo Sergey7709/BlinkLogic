@@ -32,7 +32,7 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
     enableSorting: false,
     minSize: 100,
     maxSize: 250,
-    size: 200,
+    size: 180,
   },
   {
     accessorKey: 'counter',
@@ -40,6 +40,6 @@ export const dataColumns: MRT_ColumnDef<ColumnsData>[] = [
     enableClickToCopy: false,
     minSize: 100,
     maxSize: 160,
-    size: 130,
+    size: 150,
   },
 ];
