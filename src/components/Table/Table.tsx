@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import 'mantine-react-table/styles.css';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   MantineReactTable,
   useMantineReactTable,
@@ -9,6 +9,7 @@ import {
   type MRT_SortingState,
 } from 'mantine-react-table';
 import { useGetData } from '@/service/hooks/useGetData';
+import { handleExtendData } from '@/service/function/handleExtendData';
 import { dataColumns } from './constants';
 
 export const Table = () => {
@@ -24,13 +25,13 @@ export const Table = () => {
     sorting,
   });
 
-  const fetchedLink = data?.data ?? [];
+  const extendedData = useMemo(() => handleExtendData(data), [data]);
 
   const totalCount = Number(data?.headers['x-total-count']);
 
   const table = useMantineReactTable({
     columns: dataColumns,
-    data: fetchedLink,
+    data: extendedData,
     enableGlobalFilter: false,
     enableFilters: false,
     enableColumnActions: true,
