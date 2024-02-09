@@ -4,11 +4,10 @@ import { routerPath } from '@/Router/constantsRouter';
 import { Layout } from '@/components/Layout';
 import { Registration } from '@/pages/Registration';
 import { PrivateRoutes } from '@/Router/PrivateRoutes';
-import { LinksTable } from '@/pages/Links-table';
+import { DataManager } from '@/pages/Data-manager';
 
 const publicRoutes: RouteObject[] = [
-  { path: routerPath.login,
-    element: <Login /> },
+  { path: routerPath.login, element: <Login /> },
   {
     path: routerPath.registration,
     element: <Registration />,
@@ -17,8 +16,8 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    path: routerPath.rootElement,
-    element: <LinksTable />,
+    path: routerPath.linksTable,
+    element: <DataManager />,
   },
 ];
 
@@ -31,7 +30,7 @@ const router = createBrowserRouter([
         element: <PrivateRoutes />,
         children: privateRoutes,
       },
-        ...publicRoutes,
+      ...publicRoutes,
     ],
   },
 ]);

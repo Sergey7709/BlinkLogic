@@ -1,14 +1,9 @@
-import { memo } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { routerPath } from '@/Router/constantsRouter';
+import { useAuth } from '@/context';
 
-export const PrivateRoutes = memo(() => {
-    // const { isSuccess: isAuthenticated, isLoading } = useGetAuthUserMeDataQuery();
-    const isAuthenticated = true;
+export const PrivateRoutes = () => {
+  const { isAuthenticated } = useAuth();
 
-    // if (!isAuthenticated) {
-    //     return <div>Load</div>;
-    // }
-
-    return isAuthenticated ? <Outlet /> : <Navigate to={routerPath.login} />;
-});
+  return isAuthenticated ? <Outlet /> : <Navigate to={routerPath.login} />;
+};
