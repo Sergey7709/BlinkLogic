@@ -33,6 +33,8 @@
 ![Mantine UI](https://img.shields.io/badge/-Mantine%20UI-blue?style=for-the-badge&logo=Mantine)
 ![Mantine React Table](https://img.shields.io/badge/-Mantine%20React%20Table-blue?style=for-the-badge)
 ![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-orange?style=for-the-badge&logo=React%20Query)
+![Axios](https://img.shields.io/badge/-Axios-007ACC?style=for-the-badge&logo=axios&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 # Установка приложения
 
