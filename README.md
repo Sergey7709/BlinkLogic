@@ -30,6 +30,7 @@
 ## Стек технологий
 ![React](https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Typescript](https://img.shields.io/badge/-Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React Router](https://img.shields.io/badge/-React%20Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Mantine UI](https://img.shields.io/badge/-Mantine%20UI-blue?style=for-the-badge&logo=Mantine)
 ![Mantine React Table](https://img.shields.io/badge/-Mantine%20React%20Table-blue?style=for-the-badge)
 ![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-orange?style=for-the-badge&logo=React%20Query)
